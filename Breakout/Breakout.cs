@@ -12,6 +12,8 @@ namespace Breakout
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D background;
+
         Paddle paddle;
 
         public Breakout()
@@ -45,6 +47,7 @@ namespace Breakout
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            background = this.Content.Load<Texture2D>("images/background");
 
             paddle = new Paddle(this.Content);
         }
@@ -79,9 +82,9 @@ namespace Breakout
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
-
             spriteBatch.Begin();
+            spriteBatch.Draw(background, new Rectangle(0, 0, 1920, 1080), Color.White);
+
             paddle.Draw(spriteBatch);
             spriteBatch.End();
 
