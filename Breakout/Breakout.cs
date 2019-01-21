@@ -12,6 +12,8 @@ namespace Breakout
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Paddle paddle;
+
         public Breakout()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -44,7 +46,7 @@ namespace Breakout
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            paddle = new Paddle(this.Content);
         }
 
         /// <summary>
@@ -77,9 +79,11 @@ namespace Breakout
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            paddle.Draw(spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
