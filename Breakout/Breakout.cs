@@ -68,10 +68,11 @@ namespace Breakout
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState keyboardState = Keyboard.GetState();
+            if (keyboardState.IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            paddle.Update(gameTime, keyboardState);
 
             base.Update(gameTime);
         }
