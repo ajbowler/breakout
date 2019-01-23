@@ -32,7 +32,7 @@ namespace Breakout
             {
                 Vector2 direction = isLeft ? -Vector2.UnitX : Vector2.UnitX;
                 float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-                Vector2 velocity = 400f * direction * dt;
+                Vector2 velocity = this.Speed * direction * dt;
                 this.Position += velocity;
             }
         }
